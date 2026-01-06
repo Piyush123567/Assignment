@@ -9,7 +9,7 @@ The dataset is created to simulate a large company’s project management data a
 ## Project Files
 
 - `schema.sql` – Defines database tables
-- `src/main.py` – Python script to generate data
+- `main.py` – Python script to generate data
 - `asana_simulation.sqlite` – Generated SQLite database
 - `requirements.txt` – Python dependencies
 
