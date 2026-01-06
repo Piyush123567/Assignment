@@ -5,23 +5,20 @@ from datetime import datetime, timedelta
 
 fake = Faker()
 
-# -----------------------
 # CONNECT TO DATABASE
-# -----------------------
+
 conn = sqlite3.connect("asana_simulation.sqlite")
 cursor = conn.cursor()
 
-# -----------------------
-# CREATE TABLES (VERY IMPORTANT)
-# -----------------------
+# CREATE TABLES 
+
 with open("schema.sql", "r") as f:
     cursor.executescript(f.read())
 
 print("Tables created")
 
-# -----------------------
 # GENERATE USERS
-# -----------------------
+
 NUM_USERS = 7500
 for i in range(NUM_USERS):
     cursor.execute(
@@ -30,9 +27,8 @@ for i in range(NUM_USERS):
     )
 print("Users generated")
 
-# -----------------------
 # GENERATE TEAMS
-# -----------------------
+
 NUM_TEAMS = 300
 for i in range(NUM_TEAMS):
     cursor.execute(
@@ -41,9 +37,8 @@ for i in range(NUM_TEAMS):
     )
 print("Teams generated")
 
-# -----------------------
 # GENERATE PROJECTS
-# -----------------------
+
 NUM_PROJECTS = 2000
 for i in range(NUM_PROJECTS):
     cursor.execute(
@@ -52,9 +47,8 @@ for i in range(NUM_PROJECTS):
     )
 print("Projects generated")
 
-# -----------------------
-# GENERATE TASKS (REALISTIC)
-# -----------------------
+# GENERATE TASKS 
+
 NUM_TASKS = 50000
 now = datetime.now()
 
@@ -96,16 +90,14 @@ for i in range(NUM_TASKS):
 
 print("Tasks generated")
 
-# -----------------------
 # SAVE & CLOSE
-# -----------------------
+
 conn.commit()
 conn.close()
 
 print("Asana simulation database generated successfully")
-# -----------------------
-# QUICK VERIFICATION
-# -----------------------
+
+
 conn = sqlite3.connect("asana_simulation.sqlite")
 cursor = conn.cursor()
 
@@ -117,3 +109,4 @@ for table in tables:
     print(f"{table}: {count}")
 
 conn.close()
+
